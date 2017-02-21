@@ -82,7 +82,7 @@ def ply_wav(filename, start_time, goal_time):
         elapsed_time = total_time - remain_samples / float(sampling_rate)
 
         buf = wavfile.readframes(BUF_SIZE)
-        if elapsed_time > start_time and elapsed_time < goal_time:    
+        if elapsed_time > start_time and elapsed_time < goal_time:
             stream.write(buf)
         remain_samples -= BUF_SIZE
     print "finish playing "
@@ -99,7 +99,6 @@ if __name__ == "__main__":
     if len(argv) == 4:
         start = float(argv[2])
         goal = float(argv[3])
-        print "no input filies."
         ply_wav(filename, start, goal)
     else:
         play(filename)

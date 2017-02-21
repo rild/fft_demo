@@ -6,7 +6,8 @@ import numpy
 import pylab
 
 def plot_waveform(waveform, sampling_rate):
-    times = numpy.arange(len(waveform)) / sampling_rate # 各サンプルの時刻
+    times = numpy.arange(float(len(waveform))) / sampling_rate # 各サンプルの時刻
+
     pylab.plot(times, waveform) # pair of x- and y-coordinate lists/arrays
     pylab.title("Waveform")
     pylab.xlabel("Time[sec]")
@@ -23,7 +24,6 @@ if __name__ == "__main__":
 
     filename = argv[1]
     sampling_rate, waveform = scipy.io.wavfile.read(filename)
-
     # WAVファイルのフォーマットが符号あり16bit整数であることを仮定する
     # 波形が -1.0 ~ 1.0 の範囲に収まるように正規化を行う
 

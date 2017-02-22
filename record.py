@@ -16,6 +16,7 @@ CHANNELS = 1 # monoral
 # Delay         |   smaller ---     larger
 # Skipping      |   occuring ---
 # Delay and Skipping are trade-off ...?
+
 BUF_SIZE = 1024
 
 def record(seconds, filename):
@@ -37,9 +38,13 @@ def record(seconds, filename):
     print "start recoding"
     # read data of stream by BUF_SIZE, and write that to file
     remain_samples = int(SAMPLING_RATE * seconds)
+
     while remain_samples > 0:
-        data = stream.read(min(BUF_SIZE * remain_samples))
-        wav_file.writeframes(data)
+        print remain_samples
+        # data = stream.read(min(BUF_SIZE * remain_samples))
+        data = stream.read(min(BUF_SIZE, remain_samples))
+        print data
+        wavfile.writeframes(data)
         remain_samples -= BUF_SIZE
     print "finish recoding"
 

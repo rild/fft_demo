@@ -66,6 +66,7 @@ def ply_wav(filename, start_time, goal_time):
 
     if not arg_isOk(total_time, start_time, goal_time):
         print "illegal input."
+        print "start time [%d] is too early, or goal time [%d] is too late." % (start_time, goal_time)
         exit()
 
     p = pyaudio.PyAudio()
